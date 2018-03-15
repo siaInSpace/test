@@ -9,54 +9,54 @@ startTime = time.time()
 startOrientation = s.get_orientation_degrees()
 f = open('testFile', 'w')
 #f.write("time"+tab3+"pitch"+tab3+"yaw"+tab3+"roll"+tab3+" x_Acc"+tab3+"y_Acc"+tab3+"z_Acc" +
-        #tab3+"x_Gyro"+tab3+"y_Gyro"+tab3+"z_Gyro"+tab3+"humidity"+tab2+"temp"+tab3+"pressure\n")
+	#tab3+"x_Gyro"+tab3+"y_Gyro"+tab3+"z_Gyro"+tab3+"humidity"+tab2+"temp"+tab3+"pressure\n")
 hasWritten = True
 
 
 def writeNewLine(info):
-    f.write("{0:.16f}".format(info))
-    f.write('\n')
+	f.write("{0:.16f}".format(info))
+	f.write('\n')
 
 
 def write(info):
-    f.write("{0:.16f}".format(info))
-    f.write('_')
+	f.write("{0:.16f}".format(info))
+	f.write('_')
 
 
 def writeArray(info, offset):
-    for i in range(0, 3):
-        f.write("{0:.16f}".format(info[names[i+offset]]))
-        f.write(':')
+	for i in range(0, 3):
+	f.write("{0:.16f}".format(info[names[i+offset]]))
+	f.write(':')
 
 
 def checkOrientation():
-    temp = s.get_orientation_degrees()
+	temp = s.get_orientation_degrees()
 	ret = False
-    if(5 > temp['pitch'] or temp['pitch'] > 355):
-        ret = True
-    return ret
+	if(5 > temp['pitch'] or temp['pitch'] > 355):
+	ret = True
+	return ret
 
 
 while True:
-    currTime = time.time()-startTime
-    write(currTime)
-    writeArray(s.get_orientation_degrees(), 3)
-    writeArray(s.get_accelerometer_raw(), 0)
-    writeArray(s.get_gyroscope_raw(), 0)
-    write(s.get_humidity())
-    write(s.get_temperature())
-    writeNewLine(s.get_pressure())
-    if currTime > 500:
-        break
-    if checkOrientation():
-        if (hasWritten):
-            print("pi is flipped!")
-            #f.write("\nPi has been flipped: ")
-            #f.write("{0:.16f}".format(s.get_orientation_degrees()['pitch']))
-            #f.write('\n\n')
-            #hasWritten = False
-    else:
-        hasWritten = True
+	currTime = time.time()-startTime
+	write(currTime)
+	writeArray(s.get_orientation_degrees(), 3)
+	writeArray(s.get_accelerometer_raw(), 0)
+	writeArray(s.get_gyroscope_raw(), 0)
+	write(s.get_humidity())
+	write(s.get_temperature())
+	writeNewLine(s.get_pressure())
+	if currTime > 500:
+		break
+	if checkOrientation():
+		if (hasWritten):
+			print("pi is flipped!")
+			#f.write("\nPi has been flipped: ")
+			#f.write("{0:.16f}".format(s.get_orientation_degrees()['pitch']))
+			#f.write('\n\n')
+			#hasWritten = False
+	else:
+		hasWritten = True
 	o = s.get_orientation_degrees()
 	print("pitch: {:3.3f}, roll: {:3.3f}, yaw: {:3.3f}".format(o['pitch'], o['roll'], o['yaw']))
 f.close()
