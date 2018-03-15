@@ -20,13 +20,13 @@ def writeNewLine(info):
 
 def write(info):
     f.write("{0:.16f}".format(info))
-    f.write('\t')
+    f.write('_')
 
 
 def writeArray(info, offset):
     for i in range(0, 3):
         f.write("{0:.16f}".format(info[names[i+offset]]))
-        f.write('\t')
+        f.write(':')
 
 
 def checkOrientation():
