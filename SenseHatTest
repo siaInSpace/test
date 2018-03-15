@@ -1,15 +1,15 @@
 from sense_hat import SenseHat
 import time
 s = SenseHat()
-tab = "\t"
-tab2 = "\t\t"
-tab3 = "\t\t\t"
+#tab = "\t"
+#tab2 = "\t\t"
+#tab3 = "\t\t\t"
 names = {0: 'x', 1: 'y', 2: 'z', 3: 'pitch', 4: 'yaw', 5: 'roll'}
 startTime = time.time()
 startOrientation = s.get_orientation_degrees()
 f = open('testFile', 'w')
-f.write("time"+tab3+"pitch"+tab3+"yaw"+tab3+"roll"+tab3+" x_Acc"+tab3+"y_Acc"+tab3+"z_Acc" +
-        tab3+"x_Gyro"+tab3+"y_Gyro"+tab3+"z_Gyro"+tab3+"humidity"+tab2+"temp"+tab3+"pressure\n")
+#f.write("time"+tab3+"pitch"+tab3+"yaw"+tab3+"roll"+tab3+" x_Acc"+tab3+"y_Acc"+tab3+"z_Acc" +
+        #tab3+"x_Gyro"+tab3+"y_Gyro"+tab3+"z_Gyro"+tab3+"humidity"+tab2+"temp"+tab3+"pressure\n")
 hasWritten = True
 
 
@@ -46,15 +46,15 @@ while True:
     write(s.get_humidity())
     write(s.get_temperature())
     writeNewLine(s.get_pressure())
-    if currTime > 5:
+    if currTime > 500:
         break
     if checkOrientation():
         if (hasWritten):
             print("pi is flipped!")
-            f.write("\nPi has been flipped: ")
-            f.write("{0:.16f}".format(s.get_orientation_degrees()['pitch']))
-            f.write('\n\n')
-            hasWritten = False
+            #f.write("\nPi has been flipped: ")
+            #f.write("{0:.16f}".format(s.get_orientation_degrees()['pitch']))
+            #f.write('\n\n')
+            #hasWritten = False
     else:
         hasWritten = True
 	o = s.get_orientation_degrees()
