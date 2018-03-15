@@ -33,7 +33,7 @@ def checkOrientation():
 	temp = s.get_orientation_degrees()
 	ret = False
 	if(5 > temp['pitch'] or temp['pitch'] > 355):
-	ret = True
+		ret = True
 	return ret
 
 
