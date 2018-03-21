@@ -1,6 +1,6 @@
 import Adafruit_BMP.BMP085 as BMP085
-s185 = BMP085.BMP085()
 from mpu6050 import mpu6050
+s185 = BMP085.BMP085()
 s6050 = mpu6050(0x68)
 units = {0: 'x', 1: 'y', 2: 'z'}
 f = open('OutputFile', 'w')
