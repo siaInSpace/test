@@ -1,0 +1,3 @@
+import Adafruit_BMP.BMP085 as BMP085
+s185 = BMP085.BMP085()
+print("Temp: {:.3f}, Pres: {:.3f}", Allt: {:.3f}".format(s185.read_temperature(), s185.read_pressure(), s185.read_altitude()))
