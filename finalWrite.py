@@ -5,7 +5,7 @@ s6050 = mpu6050(0x68)
 units = {0: 'x', 1: 'y', 2: 'z'}
 f = open('OutputFile', 'w')
 def fileWrite(info):
-	info = ("{0:3.3f}".format(info))
+	info = ("{:.3f}".format(info))
 	f.write(info)
 	f.write(":")
 def fileWriteArray(info):
