@@ -17,5 +17,6 @@ def streamData(info):
 	print("x: {:.3f}, y: {:.3f}, z: {:.3f}".format(info[units[0]], info[units[1]], info[units[2]]))
 while True:
 	fileWriteArray(s6050.get_gyro_data())
+	fileWriteArray(s6050.get_accel_data())
 	f.write('\n')
 	streamData(s6050.get_gyro_data())
