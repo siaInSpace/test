@@ -1,0 +1,17 @@
+from mpu6050 import mpu6050
+s6050 = mpu6050(0x68)
+units = {0: 'x', 1: 'y', 2: 'z'}
+f = open('testOutput', 'w')
+def filWrite(info):
+	info = ("{0:3.3f}".format(info))
+	f.write(info)
+	f.write(":")
+def filWriteArray(info):
+	for i in range(0, 3):
+		filWrite(info[units[i]])
+def fileWriteNewLine(info):
+	info = ("{0:3.3f}".format(info))
+	f.write(info)
+	f.write('\n')
+def streamData(info):
+	print("x: {:.3f}, y: {:.3f}, z: {:.3f}".format(info[units[0]], info[units[1]], info[units[2]]))
