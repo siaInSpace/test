@@ -12,7 +12,7 @@ def fileWrite(info):
 	f.write(info)
 	f.write(":")
 	
-readI2c():
+def readI2c():
 	I2c = new []
 	I2c.append(s6050.get_gyro_data())
 	I2c.append(s6050.get_accel_data())
